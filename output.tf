@@ -10,7 +10,7 @@ output "specific_subnet_id" {
 
 output "specific_subnet_address_prefixes" {
   description = "The address prefixes for the subnet."
-  value       = join("", azurerm_subnet.specific_subnet.*.address_prefixes)
+  value       = join("", azurerm_subnet.specific_subnet[*].address_prefixes[0])
 }
 
 output "default_subnet_name" {
@@ -25,7 +25,7 @@ output "default_subnet_id" {
 
 output "default_subnet_address_prefixes" {
   description = "The address prefixes for the subnet."
-  value       = join("", azurerm_subnet.subnet.*.address_prefixes)
+  value       = join("", azurerm_subnet.subnet[*].address_prefixes[0])
 }
 
 output "nat_gateway_id" {
@@ -45,10 +45,10 @@ output "public_ip_id" {
 
 output "route_table_id" {
   description = "The Route Table ID."
-  value       = join("", var.enable_route_table ? azurerm_route_table.rt.*.id : null)
+  value       = var.enable_route_table ? join("", azurerm_route_table.rt.*.id) : null
 }
 
 output "route_table_associated_subnets" {
   description = "The collection of Subnets associated with this route table."
-  value       = join("", var.enable_route_table ? azurerm_route_table.rt.*.subnets[0] : null)
+  value       = var.enable_route_table ? join("", azurerm_route_table.rt.*.subnets[0]) : null
 }
