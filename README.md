@@ -126,9 +126,9 @@ The following are the inputs for the modules used in this Terraform code:
 - 'routes'(Optional): A list of route entries to associate with the route table. Each route should have the following attributes:
 
    `name`: A unique name for the route.
-  
+
    `address_prefix`: The destination IP address prefix for the route (e.g., "0.0.0.0/0").
-  
+
    `next_hop_type`: The type of next hop for the route (e.g., "Internet").
 
 ## Module Outputs
