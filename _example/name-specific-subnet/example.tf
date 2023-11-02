@@ -8,8 +8,8 @@ provider "azurerm" {
 ## Resource group in which all resources will be deployed.
 ##-----------------------------------------------------------------------------
 module "resource_group" {
-  source      = "git::git@github.com:opz0/terraform-azure-resource-group.git?ref=master"
-  name        = "app"
+  source      = "git::https://github.com/opz0/terraform-azure-resource-group.git?ref=v1.0.0"
+  name        = "app-sp"
   environment = "test"
   location    = "North Europe"
 }
@@ -18,8 +18,8 @@ module "resource_group" {
 ## Virtual Network module call.
 ##-----------------------------------------------------------------------------
 module "vnet" {
-  source              = "git::git@github.com:opz0/terraform-azure-vnet.git?ref=master"
-  name                = "app"
+  source              = "git::https://github.com/opz0/terraform-azure-vnet.git?ref=v1.0.0"
+  name                = "app-specifec"
   environment         = "test"
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
@@ -33,7 +33,7 @@ module "name_specific_subnet" {
   environment          = "test"
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.resource_group_location
-  virtual_network_name = join("", module.vnet.vnet_name)
+  virtual_network_name = join("", module.vnet[*].name)
 
   #subnet
   specific_name_subnet  = true
