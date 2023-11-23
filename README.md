@@ -15,11 +15,13 @@ This repository contains Terraform code for deploying Azure resources using modu
 ## Usage
 To use this module, include it in your Terraform configuration file and provide the required input variables. Below is an example of how to use the module:
 
-# default-subnet
+# Examples
+
+# Example: default-subnet
 
 ```hcl
 module "subnet" {
-  source = "git::https://github.com/opz0/terraform-azure-subnet.git?ref=v1.0.0"
+  source = "git::https://github.com/cypik/terraform-azure-subnet.git?ref=v1.0.0"
 
   name                 = "app"
   environment          = "test"
@@ -45,11 +47,11 @@ module "subnet" {
 ```
 You can customize the input variables according to your specific requirements.
 
-# name-specific-subnet
+# Example: name-specific-subnet
 
 ```hcl
 module "name_specific_subnet" {
-  source = "git::https://github.com/opz0/terraform-azure-subnet.git?ref=v1.0.0"
+  source = "git::https://github.com/cypik/terraform-azure-subnet.git?ref=v1.0.0"
 
   name                 = "app"
   environment          = "test"
@@ -76,12 +78,11 @@ module "name_specific_subnet" {
 ```
 You can customize the input variables according to your specific requirements.
 
-# nat-gateway-subnet
+# Example: nat-gateway-subnet
 
 ```hcl
 module "subnet" {
-  source = "git::https://github.com/opz0/terraform-azure-subnet.git?ref=v1.0.0"
-
+  source = "git::https://github.com/cypik/terraform-azure-subnet.git?ref=v1.0.0"
   name        = "app"
   environment = "test"
 
@@ -135,10 +136,10 @@ The following are the inputs for the modules used in this Terraform code:
 This code provides module outputs that can be referenced in other parts of your Terraform configuration. For example, you can reference `module.resource_group.resource_group_name` to get the resource group name.
 
 ## Examples
-For detailed examples on how to use this module, please refer to the 'examples' directory within this repository.
+For detailed examples on how to use this module, please refer to the '[example](https://github.com/cypik/terraform-azure-subnet/blob/master/example)' directory within this repository.
 
 ## Author
 Your Name Replace '[License Name]' and '[Your Name]' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/opz0/terraform-azure-subnet/blob/readme/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/cypik/terraform-azure-subnet.git/blob/master/LICENSE) file for details.
