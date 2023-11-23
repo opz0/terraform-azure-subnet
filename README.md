@@ -136,10 +136,10 @@ The following are the inputs for the modules used in this Terraform code:
 This code provides module outputs that can be referenced in other parts of your Terraform configuration. For example, you can reference `module.resource_group.resource_group_name` to get the resource group name.
 
 ## Examples
-For detailed examples on how to use this module, please refer to the '[example](https://github.com/cypik/terraform-azure-subnet/blob/master/example)' directory within this repository.
+For detailed examples on how to use this module, please refer to the '[example](https://github.com/cypik/terraform-azure-subnet/blob/master/_example)' directory within this repository.
 
 ## Author
 Your Name Replace '[License Name]' and '[Your Name]' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/cypik/terraform-azure-subnet.git/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/cypik/terraform-azure-subnet/blob/master/LICENSE) file for details.
