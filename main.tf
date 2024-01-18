@@ -2,7 +2,8 @@
 ## Labels module callled that will be used for naming and tags.
 ##-----------------------------------------------------------------------------
 module "labels" {
-  source      = "git::https://github.com/cypik/terraform-azure-labels.git?ref=v1.0.0"
+  source      = "cypik/labels/azure"
+  version     = "1.0.1"
   name        = var.name
   environment = var.environment
   managedby   = var.managedby
