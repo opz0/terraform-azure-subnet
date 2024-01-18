@@ -23,8 +23,8 @@ To use this module, include it in your Terraform configuration file and provide 
 
 ```hcl
 module "subnet" {
-  source              = "cypik/subnet/azure"
-  version             = "1.0.1"
+  source               = "cypik/subnet/azure"
+  version              = "1.0.1"
   name                 = "app"
   environment          = "test"
   resource_group_name  = module.resource_group.resource_group_name
@@ -54,7 +54,7 @@ You can customize the input variables according to your specific requirements.
 ```hcl
 module "name_specific_subnet" {
   source = "cypik/subnet/azure"
-  version             = "1.0.1"
+  version              = "1.0.1"
   name                 = "app"
   environment          = "test"
   resource_group_name  = module.resource_group.resource_group_name
@@ -85,7 +85,7 @@ You can customize the input variables according to your specific requirements.
 ```hcl
 module "subnet" {
   source               = "cypik/subnet/azure"
-  version             = "1.0.1"
+  version              = "1.0.1"
   name                 = "app"
   environment          = "test"
   resource_group_name  = module.resource_group.resource_group_name
@@ -170,7 +170,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 | <a name="input_name"></a> [name](#input\_name) | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | <a name="input_nat_gateway_idle_timeout"></a> [nat\_gateway\_idle\_timeout](#input\_nat\_gateway\_idle\_timeout) | Idle timeout configuration in minutes for Nat Gateway | `number` | `4` | no |
 | <a name="input_public_ip_zones"></a> [public\_ip\_zones](#input\_public\_ip\_zones) | Public ip Zones to configure. | `list(string)` | `null` | no |
-| <a name="input_repository"></a> [repository](#input\_repository) | Terraform current module repo | `string` | `"https://github.com/cypik/terraform-azure-subnet.git"` | no |
+| <a name="input_repository"></a> [repository](#input\_repository) | Terraform current module repo | `string` | `"https://github.com/cypik/terraform-azure-subnet"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of an existing resource group to be imported. | `string` | `""` | no |
 | <a name="input_route_table_name"></a> [route\_table\_name](#input\_route\_table\_name) | The name of the route table. | `string` | `null` | no |
 | <a name="input_routes"></a> [routes](#input\_routes) | List of objects that represent the configuration of each route. | `list(map(string))` | `[]` | no |
