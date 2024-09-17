@@ -24,8 +24,8 @@ variable "label_order" {
 
 variable "managedby" {
   type        = string
-  default     = "cypik"
-  description = "ManagedBy, eg 'cypik'."
+  default     = "info@cypik.com"
+  description = "ManagedBy, eg 'info@cypik.com'"
 }
 
 variable "enable" {
@@ -44,6 +44,12 @@ variable "location" {
   type        = string
   default     = ""
   description = "The location/region where the virtual network is created. Changing this forces a new resource to be created."
+}
+
+variable "extra_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
 }
 
 variable "subnet_prefixes" {
@@ -144,8 +150,14 @@ variable "route_table_name" {
   description = "The name of the route table."
 }
 
-variable "disable_bgp_route_propagation" {
+variable "bgp_route_propagation_enabled" {
   type        = bool
   default     = false
   description = "Boolean flag which controls propagation of routes learned by BGP on that route table."
+}
+
+variable "default_outbound_access_enabled" {
+  type        = bool
+  default     = true
+  description = "Enable default outbound access to the internet for the subnet. Defaults to true."
 }
