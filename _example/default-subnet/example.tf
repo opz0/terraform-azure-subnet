@@ -1,15 +1,14 @@
 provider "azurerm" {
-  skip_provider_registration = "true"
-
   features {}
 }
+
 
 ##-----------------------------------------------------------------------------
 ## Resource group in which all resources will be deployed.
 ##-----------------------------------------------------------------------------
 module "resource_group" {
   source      = "cypik/resource-group/azure"
-  version     = "1.0.1"
+  version     = "1.0.2"
   name        = "appnew"
   environment = "test"
   location    = "North Europe"
@@ -20,7 +19,7 @@ module "resource_group" {
 ##-----------------------------------------------------------------------------
 module "vnet" {
   source              = "cypik/vnet/azure"
-  version             = "1.0.1"
+  version             = "1.0.2"
   name                = "app"
   environment         = "test"
   resource_group_name = module.resource_group.resource_group_name

@@ -3,12 +3,13 @@
 ##-----------------------------------------------------------------------------
 module "labels" {
   source      = "cypik/labels/azure"
-  version     = "1.0.1"
+  version     = "1.0.2"
   name        = var.name
   environment = var.environment
   managedby   = var.managedby
   label_order = var.label_order
   repository  = var.repository
+  extra_tags  = var.extra_tags
 }
 
 resource "azurerm_subnet" "subnet" {
@@ -17,8 +18,8 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name                           = var.resource_group_name
   address_prefixes                              = [var.subnet_prefixes[count.index]]
   virtual_network_name                          = var.virtual_network_name
-  private_endpoint_network_policies_enabled     = lookup(var.subnet_enforce_private_link_endpoint_network_policies, var.subnet_names[count.index], false)
-  service_endpoints                             = var.service_endpoints
+  default_outbound_access_enabled               = var.default_outbound_access_enabled
+  private_endpoint_network_policies             = lookup(var.subnet_enforce_private_link_endpoint_network_policies, var.subnet_names[count.index], false) ? "Enabled" : "Disabled"
   private_link_service_network_policies_enabled = var.subnet_enforce_private_link_service_network_policies
 
   dynamic "delegation" {
@@ -42,7 +43,7 @@ resource "azurerm_subnet" "specific_subnet" {
   resource_group_name                           = var.resource_group_name
   address_prefixes                              = [var.subnet_prefixes[count.index]]
   virtual_network_name                          = var.virtual_network_name
-  private_endpoint_network_policies_enabled     = lookup(var.subnet_enforce_private_link_endpoint_network_policies, var.specific_subnet_names, false)
+  private_endpoint_network_policies             = lookup(var.subnet_enforce_private_link_endpoint_network_policies, var.specific_subnet_names, false) ? "Enabled" : "Disabled"
   service_endpoints                             = var.service_endpoints
   private_link_service_network_policies_enabled = var.subnet_enforce_private_link_service_network_policies
 
@@ -111,7 +112,7 @@ resource "azurerm_route_table" "rt" {
       next_hop_in_ip_address = lookup(route.value, "next_hop_in_ip_address", null)
     }
   }
-  disable_bgp_route_propagation = var.disable_bgp_route_propagation
+  bgp_route_propagation_enabled = var.bgp_route_propagation_enabled
   tags                          = module.labels.tags
 }
 

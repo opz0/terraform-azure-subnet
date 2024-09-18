@@ -1,6 +1,4 @@
 provider "azurerm" {
-  skip_provider_registration = "true"
-
   features {}
 }
 
@@ -9,7 +7,7 @@ provider "azurerm" {
 ##-----------------------------------------------------------------------------
 module "resource_group" {
   source      = "cypik/resource-group/azure"
-  version     = "1.0.1"
+  version     = "1.0.2"
   name        = "app-sp"
   environment = "test"
   location    = "North Europe"
@@ -20,7 +18,7 @@ module "resource_group" {
 ##-----------------------------------------------------------------------------
 module "vnet" {
   source              = "cypik/vnet/azure"
-  version             = "1.0.1"
+  version             = "1.0.2"
   name                = "app-specifec"
   environment         = "test"
   resource_group_name = module.resource_group.resource_group_name
